@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update]
   def show
     @user = User.find(params[:id])
   end
@@ -20,6 +20,10 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    unless session[:user_id] == @user.id
+      flash[:danger] = "You did not login this user"
+      redirect_to @user
+    end
   end
   
   def update
