@@ -2,3 +2,11 @@
     <%= gravatar_for @user %>
     <%= @user.name %>
 </h1>
+<div class="container text-center">
+    <p><span class="glyphicon glyphicon-envelope" ></span> <%= @user.email %></p>
+    <p><span class="glyphicon glyphicon-map-marker" ></span> <%= @user.area %></p>
+    <p> about me</p>
+    <p><%= @user.profile %></p>
+   
+    
+</div>
