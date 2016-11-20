@@ -2,8 +2,8 @@
     <h1><%= @user.name %> following</h1>
     <% @followings.each do |f| %>
         <div class="container">
-            <%= gravatar_for @users.find(f) %>
-            <span class="user"><%= @users.find(f).name %></span>
+            <%= gravatar_for f %> 
+            <%= link_to f.name, f %>
         </div>
     <% end %>
 </div>
