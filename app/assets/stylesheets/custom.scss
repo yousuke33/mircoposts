@@ -176,3 +176,17 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+/* follow */
+.follow {
+  padding: 0;
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}

@@ -1,0 +1,11 @@
+<div class="follow col-md-6 col-md-offset-3">
+    <h1><%= @user.name %> following</h1>
+    <% @followings.each do |f| %>
+        <div class="container">
+            <%= gravatar_for @users.find(f) %>
+            <span class="user"><%= @users.find(f).name %></span>
+        </div>
+    <% end %>
+</div>
+
+

@@ -11,6 +11,14 @@
                 <p> about me</p>
                 <p><%= @user.profile %></p>
             </div>
+            <div class="col-md-6">
+                <%= link_to "Followings",{ controller: "users", action: "followings"} %>
+                <div> <%= @followings.length %></div>
+            </div>
+            <div class="col-md-6">
+                <%= link_to "Followers",{ controller: "users", action: "followers"} %>
+                <div> <%= @followers.length %></div>
+            </div>
         </section>
     </aside>
     <div class="col-md-8">
