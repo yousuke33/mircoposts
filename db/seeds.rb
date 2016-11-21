@@ -2,6 +2,7 @@
   User.create(:name => "タイトル #{no}", :email => "#{no}@#{no}.com", :password => "#{no}",:password_confirmation => "#{no}")
   5.times do |i|
       Relationship.create(:followed_id => i, :follower_id => no)
+      Micropost.create(:user_id => i, :content => "マイクロポストコンテント　#{no}")
   end
 end
 
