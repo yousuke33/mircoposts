@@ -9,15 +9,18 @@ Rails.application.routes.draw do
     member do
       get 'followings'
       get 'followers'
+      get 'likes'
     end
   end
-  resources :microposts
-  post 'microposts/:id', to: 'microposts#retweet'
+  resources :microposts do
+    member do
+      post 'retweet'
+    end
+  end
+  # post 'microposts/:id', to: 'microposts#retweet'
   
   resources :relationships, only: [:create, :destroy]
-
-
-
+  resources :likes, only: [:create, :destroy]
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
