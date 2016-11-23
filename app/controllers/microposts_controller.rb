@@ -33,6 +33,16 @@ class MicropostsController < ApplicationController
         end
     end
     
+    def likes
+        micropost = Micropost.find_by(id: params[:id])
+        @like = current_user.likes.new(micropost_id: micropost.id)
+        if @like.save
+            redirect_to root_path
+        else
+            render 'static_pages/home'
+        end
+    end    
+    
     private
     def micropost_params
         params.require(:micropost).permit(:content)

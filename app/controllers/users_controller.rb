@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.order(created_at: :desc)
     @followings = @user.following_user_ids
     @followers = @user.follower_user_ids
+    @likes = @user.likes.order(created_at: :desc)
   end
   
   def new

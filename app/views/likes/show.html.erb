@@ -1,0 +1,20 @@
+<div class="follow col-md-6 col-md-offset-3">
+    <h1><%= @user.name %> like</h2>
+    <% @likes.each do |f| %>
+        <% @microposts = @micropost.find_by(id: f.micropost_id) %>
+        <% @users = User.find_by(id: @microposts.user_id) %>
+        <div class="container">
+            <div class="row">
+               <div class="col-md-3">
+                    <%= gravatar_for @users %> 
+                    <%= link_to @users.name, @users %>
+               </div> 
+               <div class="col-md-9">
+                   <%= @microposts.content %>
+                   <%= link_to 'unlike', like_path(like_id: f.id), method: 'delete' %>
+                   <%= f.micropost_id %>
+               </div>
+            </div>
+    </div>
+    <% end %>
+</div>

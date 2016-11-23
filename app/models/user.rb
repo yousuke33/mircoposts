@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   
   has_many :microposts
   
-  has_many :likes
+  has_many :likes, dependent: :destroy
   
-  has_many :retweets, -> { where(user_id: id).where.not(retweet_id: nil)}, class_name: 'Micropost'
+  has_many :retweets, -> { where.not(retweet_id: nil) }, class_name: 'Micropost'
   
   has_many :following_relationships, class_name:  "Relationship",
                                      foreign_key: "follower_id",
@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following_users.include?(other_user)
   end
-  
   
   def feed_items
      Micropost.where(user_id: following_user_ids + [self.id])

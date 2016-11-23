@@ -20,8 +20,8 @@
                 <div> <%= @followers.length %></div>
             </div>
             <div class="col-md-4">
-                <%= link_to "Followers",{ controller: "users", action: "followers"} %>
-                <div> <%= @followers.length %></div>
+                <%= link_to "Like",{controller: "likes", action:"show"} %>
+                <div> <%= @likes.length %></div>
             </div>
             
         </section>
