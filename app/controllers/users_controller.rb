@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update]
+  before_action :info_passing, only: [:followings, :followers]
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
@@ -41,17 +42,25 @@ class UsersController < ApplicationController
   end
   
   def followings
-    @user = User.find(params[:id])
-    @followings = @user.following_users
+    @users = @user.following_users
+    @title = "following"
+    render 'users'
   end
   
   def followers
-    @user = User.find(params[:id])
-    @followers = @user.follower_users
+    @users = @user.follower_users
+    @title = "followed"
+    render 'users'
   end
   
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,:area,:profile)
+  end
+  def info_passing
+    @user = User.find(params[:id])
+    @followings = @user.following_user_ids
+    @followers = @user.follower_user_ids
+    @likes = @user.likes.order(created_at: :desc)
   end
 end

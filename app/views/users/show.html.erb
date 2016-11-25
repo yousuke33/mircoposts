@@ -1,16 +1,16 @@
 <div class="row">
     <aside class="col-md-4">
         <section class="user_info">
-            <h1>
+            <h1 id="user-info">
                 <%= gravatar_for @user %>
                 <%= @user.name %>
             </h1>
-            <div class="container text-center">
+            <address>
                 <p><span class="glyphicon glyphicon-envelope" ></span> <%= @user.email %></p>
                 <p><span class="glyphicon glyphicon-map-marker" ></span> <%= @user.area %></p>
                 <p> about me</p>
                 <p><%= @user.profile %></p>
-            </div>
+            </address>
             <div class="col-md-4">
                 <%= link_to "Followings",{ controller: "users", action: "followings"} %>
                 <div> <%= @followings.length %></div>

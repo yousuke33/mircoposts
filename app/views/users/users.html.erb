@@ -23,31 +23,17 @@
                 <%= link_to "Like",{controller: "likes", action:"show"} %>
                 <div> <%= @likes.length %></div>
             </div>
-            
         </section>
     </aside>
-    <div class="follow col-md-8">
-    <h1><%= @user.name %> like</h2>
-    <% @likes.each do |f| %>
-        <% @microposts = @micropost.find_by(id: f.micropost_id) %>
-        <% @users = User.find_by(id: @microposts.user_id) %>
-        <div class="container">
-            <div class="row">
-               <div class="col-md-3">
-                    <%= gravatar_for @users %> 
-                    <%= link_to @users.name, @users %>
-               </div> 
-               <div class="col-md-9">
-                   <%= @microposts.content %>
-                   <%= link_to 'unlike', like_path(like_id: f.id), method: 'delete' %>
-               </div>
+    <div class="col-md-8">
+        <h1><%= @user.name %> <%= @title %></h1>
+        <% @users.each do |f| %>
+            <div class="container">
+                <%= gravatar_for f %> 
+                <%= link_to f.name, f %>
             </div>
+        <% end %>
     </div>
-    <% end %>
 </div>
-</div>
-
-
-
 
 
